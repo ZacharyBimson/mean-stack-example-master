@@ -1,92 +1,151 @@
 <div *ngIf="viewMode; else editable">
-  <div *ngIf="currentTutorial.id">
-    <h4>Tutorial</h4>
+  <div *ngIf="currentEmployee.id">
+    <h4>Employee</h4>
     <div>
-      <label><strong>Title:</strong></label> {{ currentTutorial.title }}
+      <label><strong>First Name:</strong></label>
+      {{ currentEmployee.firstName }}
     </div>
     <div>
-      <label><strong>Description:</strong></label>
-      {{ currentTutorial.description }}
+      <label><strong>Last Name:</strong></label> {{ currentEmployee.lastName }}
     </div>
     <div>
-      <label><strong>Status:</strong></label>
-      {{ currentTutorial.published ? "Published" : "Pending" }}
+      <label><strong>Email:</strong></label> {{ currentEmployee.email }}
     </div>
+    <div>
+      <label><strong>Phone Number:</strong></label>
+      {{ currentEmployee.phoneNumber }}
+    </div>
+    <div>
+      <label><strong>Department:</strong></label>
+      {{ currentEmployee.department }}
+    </div>
+    <div>
+      <label><strong>Position:</strong></label> {{ currentEmployee.position }}
+    </div>
+    <div>
+      <label><strong>Salary:</strong></label> {{ currentEmployee.salary }}
+    </div>
+    <div>
+      <label><strong>Country:</strong></label> {{ currentEmployee.country }}
+    </div>
+    <!-- Add any other fields from the Employee schema here -->
 
-    <a class="badge badge-warning"
-      routerLink="/tutorials/{{ currentTutorial.id }}">
-      Edit
-    </a>
+    <a
+      class="badge badge-warning"
+      [routerLink]="['/employees', currentEmployee.id]"
+      >Edit</a
+    >
   </div>
 
-  <div *ngIf="!currentTutorial">
+  <div *ngIf="!currentEmployee.id">
     <br />
-    <p>Please click on a Tutorial...</p>
+    <p>Please click on an employee...</p>
   </div>
 </div>
 
 <ng-template #editable>
-  <div *ngIf="currentTutorial.id" class="edit-form">
-    <h4>Tutorial</h4>
+  <div *ngIf="currentEmployee.id" class="edit-form">
+    <h4>Employee</h4>
     <form>
       <div class="form-group">
-        <label for="title">Title</label>
+        <label for="firstName">First Name</label>
         <input
           type="text"
           class="form-control"
-          id="title"
-          [(ngModel)]="currentTutorial.title"
-          name="title"
+          id="firstName"
+          [(ngModel)]="currentEmployee.firstName"
+          name="firstName"
         />
       </div>
       <div class="form-group">
-        <label for="description">Description</label>
+        <label for="lastName">Last Name</label>
         <input
           type="text"
           class="form-control"
-          id="description"
-          [(ngModel)]="currentTutorial.description"
-          name="description"
+          id="lastName"
+          [(ngModel)]="currentEmployee.lastName"
+          name="lastName"
         />
       </div>
-
       <div class="form-group">
-        <label><strong>Status:</strong></label>
-        {{ currentTutorial.published ? "Published" : "Pending" }}
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          [(ngModel)]="currentEmployee.email"
+          name="email"
+        />
       </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input
+          type="tel"
+          class="form-control"
+          id="phoneNumber"
+          [(ngModel)]="currentEmployee.phoneNumber"
+          name="phoneNumber"
+        />
+      </div>
+      <div class="form-group">
+        <label for="department">Department</label>
+        <input
+          type="text"
+          class="form-control"
+          id="department"
+          [(ngModel)]="currentEmployee.department"
+          name="department"
+        />
+      </div>
+      <div class="form-group">
+        <label for="position">Position</label>
+        <input
+          type="text"
+          class="form-control"
+          id="position"
+          [(ngModel)]="currentEmployee.position"
+          name="position"
+        />
+      </div>
+      <div class="form-group">
+        <label for="salary">Salary</label>
+        <input
+          type="number"
+          class="form-control"
+          id="salary"
+          [(ngModel)]="currentEmployee.salary"
+          name="salary"
+        />
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input
+          type="text"
+          class="form-control"
+          id="country"
+          [(ngModel)]="currentEmployee.country"
+          name="country"
+        />
+      </div>
+      <!-- Add any other fields from the Employee schema here -->
     </form>
 
-    <button
-      class="badge badge-primary mr-2"
-      *ngIf="currentTutorial.published"
-      (click)="updatePublished(false)"
-    >
-      UnPublish
-    </button>
-    <button
-      *ngIf="!currentTutorial.published"
-      class="badge badge-primary mr-2"
-      (click)="updatePublished(true)"
-    >
-      Publish
-    </button>
-
-    <button class="badge badge-danger mr-2" (click)="deleteTutorial()">
+    <button class="badge badge-danger mr-2" (click)="deleteEmployee()">
       Delete
     </button>
 
     <button
       type="submit"
       class="badge badge-success mb-2"
-      (click)="updateTutorial()"
+      (click)="updateEmployee()"
     >
       Update
     </button>
     <p>{{ message }}</p>
   </div>
 
-  <div *ngIf="!currentTutorial.id">
+  <div *ngIf="!currentEmployee.id">
     <br />
-    <p>Cannot access this Tutorial...</p>
+    <p>Cannot access this employee...</p>
   </div>
 </ng-template>

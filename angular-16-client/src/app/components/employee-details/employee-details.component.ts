@@ -8,7 +8,6 @@ import { Employee } from 'src/app/models/employee.model';
   templateUrl: './employee-details.component.html',
   styleUrls: ['./employee-details.component.css'],
 })
-
 export class EmployeeDetailsComponent {
   @Input() viewMode = false;
 
@@ -20,7 +19,7 @@ export class EmployeeDetailsComponent {
     department: '',
     position: '',
     salary: 0,
-    country: ''
+    country: '',
   };
 
   message = '';
@@ -44,12 +43,11 @@ export class EmployeeDetailsComponent {
         this.currentEmployee = data;
         console.log(data);
       },
-      error: (e) => console.error(e)
+      error: (e) => console.error(e),
     });
   }
 
-
-  updatEemployee(): void {
+  updateEmployee(): void {
     this.message = '';
 
     this.employeeService
@@ -61,17 +59,17 @@ export class EmployeeDetailsComponent {
             ? res.message
             : 'This employee was updated successfully!';
         },
-        error: (e) => console.error(e)
+        error: (e) => console.error(e),
       });
   }
 
-  deleteemployee(): void {
+  deleteEmployee(): void {
     this.employeeService.delete(this.currentEmployee.id).subscribe({
       next: (res) => {
         console.log(res);
         this.router.navigate(['/employees']);
       },
-      error: (e) => console.error(e)
+      error: (e) => console.error(e),
     });
   }
 }
