@@ -1,30 +1,28 @@
 module.exports = (mongoose) => {
   var schema = mongoose.Schema({
-    employeeSchema: {
-      firstName: {
-        type: "String",
-      },
-      lastName: {
-        type: "String",
-      },
-      email: {
-        type: "String",
-      },
-      phoneNumber: {
-        type: "String",
-      },
-      department: {
-        type: "String",
-      },
-      position: {
-        type: "String",
-      },
-      salary: {
-        type: "Number",
-      },
-      country: {
-        type: "String",
-      },
+    firstName: {
+      type: "String",
+    },
+    lastName: {
+      type: "String",
+    },
+    email: {
+      type: "String",
+    },
+    phoneNumber: {
+      type: "String",
+    },
+    department: {
+      type: "String",
+    },
+    position: {
+      type: "String",
+    },
+    salary: {
+      type: "Number",
+    },
+    country: {
+      type: "String",
     },
   });
 
