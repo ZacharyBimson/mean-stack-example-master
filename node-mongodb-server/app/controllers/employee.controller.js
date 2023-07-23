@@ -1,14 +1,8 @@
 const db = require("../models");
-const employee = db.employees;
+const Employee = db.employees;
 
 // Create and Save a new employee
 exports.create = (req, res) => {
-  // Validate request
-  if (!req.body.title) {
-    res.status(400).send({ message: "Content can not be empty!" });
-    return;
-  }
-
   // Create a employee
   const employee = new Employee({
     firstName: req.body.firstName,
@@ -37,7 +31,10 @@ exports.create = (req, res) => {
 
 // Retrieve all employees from the database.
 exports.findAll = (req, res) => {
-  employee.find()
+  const firstName = req.query.firstName;
+  var condition = firstName ? { firstName: { $regex: new RegExp(firstName), $options: "i" } } : {};
+
+  employee.find(condition)
     .then(data => {
       res.send(data);
     })
