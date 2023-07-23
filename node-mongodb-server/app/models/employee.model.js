@@ -1,7 +1,6 @@
 module.exports = mongoose => {
   var schema = mongoose.Schema(
     {
-      "employeeSchema": {
         "firstName": {
           "type": "String",
         },
@@ -10,7 +9,6 @@ module.exports = mongoose => {
         },
         "email": {
           "type": "String",
-          "unique": true
         },
         "phoneNumber": {
           "type": "String",
@@ -28,7 +26,6 @@ module.exports = mongoose => {
           "type": "String",
         }
       }
-    }
   );
 
   schema.method("toJSON", function() {

@@ -31,10 +31,7 @@ exports.create = (req, res) => {
 
 // Retrieve all employees from the database.
 exports.findAll = (req, res) => {
-  const firstName = req.query.firstName;
-  var condition = firstName ? { firstName: { $regex: new RegExp(firstName), $options: "i" } } : {};
-
-  employee.find(condition)
+  employee.find()
     .then(data => {
       res.send(data);
     })
